@@ -8,6 +8,11 @@ export const Store = async(req, res)=>{
    const body = userSchema.parse(req.body); // ✅ Validasi di sini
 
     try{
+        // cek email
+        const check = await prisma.user.findUnique({where:{email:body.email}})
+
+        if(check) return res.status(400).json({message:'Email sudah terdaftar'})
+
         const hashed = await bcrypt.hash(body.password, 12);
         console.log(req.body)
 
