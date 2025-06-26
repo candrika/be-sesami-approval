@@ -21,7 +21,7 @@ router.get("/api/admin/user/:id", auth, authorize(['Admin']), Show);
 router.patch("/api/admin/user/:id/role", auth, authorize(['Admin']), updateRole)
 router.patch("/api/admin/user/:id/reset-password", auth, authorize(['Admin']), resetPassword)
 router.put('/api/admin/user/:id/update',auth, Update);
-router.get("/api/admin/leaves", auth, authorize(['Verifikator']), index);
+router.get("/api/admin/leaves", auth, authorize(['Admin']), index);
 
 //route verifikator
 router.get("/api/verifikator/users", auth, authorize(['Verifikator']), Index);
